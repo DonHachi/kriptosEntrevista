@@ -1,0 +1,11 @@
+{% if success %}
+<h1>Congrats you have sent a new comment! Want to send another?</h1>
+{% endif %}
+<form action="/insert" method="POST">
+    <div>
+        <input type="text" maxlength="20" name="comment" placeholder="Please input your comments (max 20 characters)">
+    </div>
+    <div>
+        <button type="submit">Send Comment</button>
+    </div>
+</form>
