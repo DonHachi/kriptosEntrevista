@@ -1,5 +1,5 @@
 #functions and libraries
-from flask import Flask,request,jsonify,render_template
+from flask import Flask,request,jsonify,render_template,redirect
 from pymongo import MongoClient
 from pprint import pprint
 import mongodb
@@ -11,14 +11,16 @@ app = Flask(__name__)
 #app routes
 @app.route('/')
 def home():
-    return render_template('insert.html')
+    return redirect('insert')
 
-@app.route('/insert',methods=['POST'])
+@app.route('/insert',methods=['POST','GET'])
 def insertData():
     if request.method=='POST':
         data = {"Comment":request.form['comment']}
         mongodb.insertComment(data)
         return render_template('insert.html',success=True)
+    if request.method=='GET':
+        return render_template('insert.html')
 
 #error handlers
 @app.errorhandler(404)

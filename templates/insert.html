@@ -1,11 +1,34 @@
-{% if success %}
-<h1>Congrats you have sent a new comment! Want to send another?</h1>
-{% endif %}
-<form action="/insert" method="POST">
-    <div>
-        <input type="text" maxlength="20" name="comment" placeholder="Please input your comments (max 20 characters)">
+{% extends "base.html" %}
+{% block title %}Insert Data{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            {% if success %}
+            <h1>Congrats you have sent a new comment! Want to send another?</h1>
+            {% endif %}
+        </div>
     </div>
-    <div>
-        <button type="submit">Send Comment</button>
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="width: fit-content;align-self:center;">
+                <div class="card-body">
+                    <h5 class="card-title">Insert data to database</h5>
+
+                    <form action="/insert" method="POST">
+
+                        <div>
+                            <input type="text" maxlength="20" name="comment"
+                                placeholder="Please input your comments (max 20 characters)">
+                            <button type="submit">Send Comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+
+
+</div>
+{% endblock %}
